@@ -1,7 +1,7 @@
 {
   "name": "@schibstedspain/suistudio-webpack",
-  "version": "0.0.6",
-  "description": "",
+  "version": "1.0.0",
+  "description": "highly opinionated webpack config",
   "main": "webpack.base",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
