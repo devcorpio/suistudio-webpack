@@ -1,0 +1,21 @@
+{
+  "name": "suistudio-webpack-test-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "rm -Rf dist/ && webpack --env.prod -p",
+    "start": "NODE_ENV=development webpack-dev-server --env.dev --hot",
+    "phoenix": "rm -Rf node_modules && npm i --cache-min=999999"
+  },
+  "dependencies": {
+    "react": "15.4.2",
+    "react-dom": "15.4.2"
+  },
+  "devDependencies": {
+    "@schibstedspain/suistudio-webpack": "0.0.5"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
