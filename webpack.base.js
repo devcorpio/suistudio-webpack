@@ -68,10 +68,7 @@ module.exports = (settings = {}) => env => {
       ifProd(new webpack.optimize.CommonsChunkPlugin({
         names: ['vendor', 'manifest'],
       })),
-      new HtmlWebpackPlugin({
-        template: setup.plugins.HtmlWebpackPlugin.template,
-        inject: setup.plugins.HtmlWebpackPlugin.inject
-      }),
+      new HtmlWebpackPlugin(setup.plugins.HtmlWebpackPlugin),
       ifProd(new OfflinePlugin()),
       new webpack.DefinePlugin(Object.assign({},{
         'process.env': {
