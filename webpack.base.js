@@ -76,6 +76,7 @@ module.exports = (settings = {}) => env => {
         names: ['vendor', 'manifest'],
       })),
       new HtmlWebpackPlugin(setup.plugins.HtmlWebpackPlugin),
+      new HtmlWebpackPlugin(Object.assign(setup.plugins.HtmlWebpackPlugin, {filename: '200.html'})),
       ifProd(new OfflinePlugin()),
       new webpack.DefinePlugin(Object.assign({},{
         'process.env': {
