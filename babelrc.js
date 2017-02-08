@@ -11,9 +11,10 @@ module.exports = {
   ],
   "env": {
     "development": {
-      "presets": [
-        "react-hmre"
+      "plugins": [
+        "react-hot-loader/babel"
       ]
     }
   }
 }
+

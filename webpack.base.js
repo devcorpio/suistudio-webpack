@@ -13,7 +13,8 @@ const OfflinePlugin = require('offline-plugin')
 const defaultSettings = {
   context: 'src',
   output: {
-    path: 'dist'
+    path: 'dist',
+    publicPath: '/'
   },
   plugins: {
     HtmlWebpackPlugin: {
@@ -32,12 +33,17 @@ module.exports = (settings = {}) => env => {
     context: resolve(setup.context),
     entry: ifProd(
       setup.entry,
-      setup.entry.app
+      [
+        'react-hot-loader/patch',
+        'webpack-dev-server/client?http://localhost:8080',
+        'webpack/hot/only-dev-server',
+        setup.entry.app
+      ]
     ),
     output: {
       filename: ifProd('bundle.[name].[chunkhash].js', 'bundle.[name].js'),
       path: resolve(setup.output.path),
-      pathinfo: ifNotProd(),
+      publicPath: ifNotProd('/', setup.output.publicPath)
     },
     devtool: ifProd('source-map', 'eval'),
     module: {
@@ -52,7 +58,7 @@ module.exports = (settings = {}) => env => {
           {
             test: /\.s?css$/,
             loader: ExtractTextPlugin.extract({
-              fallbackLoader: 'style-loader', loader: 'css-loader!sass-loader' 
+              fallbackLoader: 'style-loader', loader: 'css-loader!sass-loader'
             })
           },
           { test: /\.s?css$/, loaders: ['style-loader', 'css-loader', 'sass-loader'] }
@@ -62,6 +68,7 @@ module.exports = (settings = {}) => env => {
     },
 
     plugins: removeEmpty([
+      ifNotProd(new webpack.HotModuleReplacementPlugin()),
       new ProgressBarPlugin(),
       new ExtractTextPlugin(ifProd('styles.[name].[chunkhash].css', 'styles.[name].css')),
       ifProd(new InlineManifestWebpackPlugin()),
@@ -76,8 +83,12 @@ module.exports = (settings = {}) => env => {
         }
       }, setup.plugins.DefinePlugin)),
     ]),
+    resolve: {
+      extensions: ['.js', '.jsx', '.json']
+    }
   }
-  
+
   return config
 }
+
 
