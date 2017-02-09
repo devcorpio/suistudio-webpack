@@ -1,6 +1,6 @@
 {
   "name": "@schibstedspain/suistudio-webpack",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "description": "highly opinionated webpack config",
   "main": "webpack.base",
   "scripts": {
@@ -35,6 +35,7 @@
     "file-loader": "0.9.0",
     "html-webpack-plugin": "2.28.0",
     "inline-manifest-webpack-plugin": "3.0.1",
+    "isomorphic-style-loader": "1.1.0",
     "json-loader": "0.5.4",
     "node-sass": "4.5.0",
     "offline-plugin": "4.6.1",
