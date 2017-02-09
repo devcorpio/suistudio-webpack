@@ -13,7 +13,7 @@
     "react-dom": "15.4.2"
   },
   "devDependencies": {
-    "@schibstedspain/suistudio-webpack": "0.0.5"
+    "@schibstedspain/suistudio-webpack": "1"
   },
   "keywords": [],
   "author": "",
