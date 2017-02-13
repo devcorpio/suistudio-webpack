@@ -4,7 +4,7 @@ const autoprefixer = require('autoprefixer')
 const path = require('path')
 
 module.exports = {
-  context: path.resolve(process.env.PWD, 'src'),
+  context: path.resolve(process.cwd(), 'src'),
   resolve: {
     extensions: ['*', '.js', '.jsx', '.json']
   },
@@ -15,7 +15,7 @@ module.exports = {
   ],
   target: 'web',
   output: {
-    path: path.resolve(__dirname, 'public'),
+    path: path.resolve(process.env.PWD, 'public'),
     publicPath: '/',
     filename: 'bundle.js'
   },
@@ -25,7 +25,8 @@ module.exports = {
       DEBUG: false
     }),
     new webpack.DefinePlugin({
-      __DEV__: true
+      __DEV__: true,
+      __BASE_DIR__: JSON.stringify(process.env.PWD)
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
@@ -45,7 +46,7 @@ module.exports = {
         context: '/',
         postcss: () => [autoprefixer],
       }
-    }) 
+    })
   ],
   module: {
     rules: [
@@ -60,3 +61,4 @@ module.exports = {
     ]
   }
 };
+

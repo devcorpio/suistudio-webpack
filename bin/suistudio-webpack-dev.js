@@ -15,7 +15,7 @@ browserSync({
     port: 3001
   },
   server: {
-    baseDir: path.resolve(process.env.PWD, 'src'),
+    baseDir: path.resolve(process.cwd(), 'src'),
 
     middleware: [
       historyApiFallback(),
@@ -45,4 +45,5 @@ browserSync({
     'src/*.html'
   ]
 });
+
 
